@@ -1,0 +1,32 @@
+<!-- 给出一个上传文件不刷新页面的方案 -->
+<!-- 上传文件不刷新页面，则可以用异步上传ajax -->
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>上传文件不刷新页面</title>
+    </head>
+    <body>
+       <input type="file" id="upload">
+       <button id="upload_btn" onclick="upload()">上传</button>
+       <script>
+           function upload() {
+               var btn = document.getElementById('upload_btn'); 
+               btn.onclick = function() {
+                  var oInput = document.getElementById('upload');
+                  var file = oInput.files[0];
+                  var formData = new FormData();   //创建表单数据
+                  formData.append('file',file);
+                  
+                  ajax.post(url,data={
+                     data:formData
+                  }).then(res => {
+                      console.log(res);
+                  }).catch(err => {
+                      console.log(err);
+                  })
+
+               }
+           }
+       </script>
+    </body>
+</html>

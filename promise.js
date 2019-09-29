@@ -1,13 +1,10 @@
-var p = new Promise((resolve,reject) => {
-    setTimeout(function(){
-      console.log('模拟异步函数');
-      resolve('1s后调用');
-    },1000);
-}).then(res => {
+//一个Promise对象的实例
+function timeout(ms) {
+    return new Promise((resolve,reject) => {
+        setTimeout(resolve,ms,'done');
+    });
+}
+
+timeout(100).then(res => {
     console.log(res);
-})
-
-/*
-promise传入一个函数参数
-
-*/
+});
